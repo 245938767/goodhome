@@ -28,13 +28,15 @@ class _homeIndexState extends State<homeIndex> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.amber[800],
         title: HomeappBar(
           searchController: _searchController,
           searchBar: _searchBar,
         ),
       ),
       body: const Center(
-        child: Text("dwad"),
+        child: HomeBodyListview(),
       ),
     );
   }

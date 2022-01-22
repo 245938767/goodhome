@@ -245,7 +245,7 @@ class _LoginPageState extends State<LoginPage> {
                             _returnPassword();
                           },
                           child: const Text(
-                            "找回密码",
+                            "返回首页",
                             style: TextStyle(
                               fontSize: 12,
                             ),
@@ -309,7 +309,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   _returnPassword() {
-    RouterApplication.router.navigateTo(context, "/returnPassword");
+    RouterApplication.router.navigateTo(context, "/");
   }
 
   _phoneLogin() {
