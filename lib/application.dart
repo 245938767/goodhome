@@ -9,6 +9,7 @@ void main() {
   debugPaintSizeEnabled = false;
   runApp(const Application());
 }
+
 class Application extends StatefulWidget {
   const Application({Key? key}) : super(key: key);
 
@@ -30,5 +31,3 @@ class _ApplicationState extends State<Application> {
     );
   }
 }
-
-

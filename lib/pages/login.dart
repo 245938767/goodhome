@@ -16,13 +16,14 @@ class _LoginPageState extends State<LoginPage> {
   IconData _passwordIcon = Icons.visibility;
   bool _isAcceptSelected = false;
   double _showDelog = 0;
+  bool _lodingShow = false;
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     double _mainHeight = size.width / 2.7;
     return Scaffold(
-        resizeToAvoidBottomInset: false,
+        resizeToAvoidBottomInset: true,
         body: Stack(
           fit: StackFit.expand,
           //填充
@@ -36,8 +37,7 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Container(
-                      margin:
-                           EdgeInsets.only(top: _mainHeight, bottom: 32),
+                      margin: EdgeInsets.only(top: _mainHeight, bottom: 32),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -110,7 +110,6 @@ class _LoginPageState extends State<LoginPage> {
                               // FilterChip(label: label, onSelected: onSelected)
                               // ],
                               obscureText: _passwordShow,
-                              // textAlign: TextAlign.center,
                               controller: _passwordController,
                               decoration: const InputDecoration(
                                 border: InputBorder.none,
@@ -215,7 +214,7 @@ class _LoginPageState extends State<LoginPage> {
             Positioned(
                 left: 0,
                 right: 0,
-                bottom: size.width/25,
+                bottom: size.width / 25,
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
@@ -273,21 +272,47 @@ class _LoginPageState extends State<LoginPage> {
                           )),
                     ),
                   ],
-                ))
+                )),
+            Positioned(
+              top: size.height / 4,
+              left: size.width / 2.6,
+              child: Visibility(
+                visible: _lodingShow,
+                //是否保持占位
+                maintainState: false,
+                child: const CupertinoActivityIndicator(
+                  radius: 40.0,
+                  animating: true,
+                ),
+              ),
+            ),
           ],
         ));
   }
-  _login(){
-    String username=_unameController.value.text;
-    String password=_passwordController.value.text;
+
+  _login() {
+    String username = _unameController.value.text;
+    String password = _passwordController.value.text;
+    setState(() {
+      if (username == "admin" && password == "admin") {
+        _lodingShow = true;
+      } else {
+        _lodingShow = false;
+      }
+    });
   }
-  _registerUser(){
+
+  _loginClick() async {}
+
+  _registerUser() {
     RouterApplication.router.navigateTo(context, "/register");
   }
-  _returnPassword(){
+
+  _returnPassword() {
     RouterApplication.router.navigateTo(context, "/returnPassword");
   }
-  _phoneLogin(){
+
+  _phoneLogin() {
     RouterApplication.router.navigateTo(context, "/phoneLogin");
   }
 }
