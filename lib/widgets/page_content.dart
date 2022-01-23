@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:goodhome/config/router_application.dart';
-
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:goodhome/application.dart';
 class PageContent extends StatelessWidget {
   final String name;
 
@@ -17,22 +18,22 @@ class PageContent extends StatelessWidget {
         children: <Widget>[
           FlatButton(
               onPressed: () {
-                RouterApplication.router.navigateTo(context, "/");
+                Get.toNamed(RouteConfig.main);
               },
               child: const Text("首页")),
           FlatButton(
               onPressed: () {
-                RouterApplication.router.navigateTo(context, "/login");
+                Get.toNamed(RouteConfig.login);
               },
               child: const Text("登陆")),
           FlatButton(
               onPressed: () {
-                RouterApplication.router.navigateTo(context, "/xxx");
+                Get.toNamed("/xx");
               },
               child: const Text("404")),
           FlatButton(
               onPressed: () {
-                RouterApplication.router.navigateTo(context, "/roomDetail?id=$x");
+                Get.toNamed(RouteConfig.roomDetail,arguments: {"intx":x});
               },
               child: const Text("传参数")),
         ],

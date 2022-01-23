@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:goodhome/config/router_application.dart';
-
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:goodhome/application.dart';
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -158,8 +159,7 @@ class _LoginPageState extends State<LoginPage> {
                         const Text("已阅读并同意"),
                         TextButton(
                             onPressed: () {
-                              RouterApplication.router
-                                  .navigateTo(context, "/userLicences");
+                              Get.toNamed(RouteConfig.userLicences);
                             },
                             child: const Text("服务协议"))
                       ],
@@ -302,17 +302,16 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
-  _loginClick() async {}
 
   _registerUser() {
-    RouterApplication.router.navigateTo(context, "/register");
+    Get.toNamed(RouteConfig.register);
   }
 
   _returnPassword() {
-    RouterApplication.router.navigateTo(context, "/");
+    Get.toNamed(RouteConfig.main);
   }
 
   _phoneLogin() {
-    RouterApplication.router.navigateTo(context, "/phoneLogin");
+    Get.toNamed(RouteConfig.phoneLogin);
   }
 }
