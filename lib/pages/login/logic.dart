@@ -57,11 +57,11 @@ class LoginController extends GetxController {
   //登陆
   login() {
     if (_formKey.currentState!.validate()) {
-      Get.defaultDialog(onConfirm: () => print("Ok"), middleText: "校验成功");
+      Get.snackbar("校验", "账号密码校验成功!!!");
 
       String username = _unameController.value.text;
       String password = _passwordController.value.text;
-      if (username == "admin" && password == "admin") {
+      if (username == "admin" && password == "admins1") {
         _lodingShow = true;
       } else {
         _lodingShow = false;
@@ -74,10 +74,24 @@ class LoginController extends GetxController {
   }
 
   returnPassword() {
-    Get.toNamed(RouteConfig.main);
+    Get.offAllNamed(RouteConfig.main);
   }
 
   phoneLogin() {
     Get.toNamed(RouteConfig.phoneLogin);
+  }
+
+  @override
+  void onClose() {
+    // TODO: implement onClose
+    print("close");
+    super.onClose();
+  }
+
+  @override
+  void onReady() {
+    // TODO: implement onReady
+    print("onready");
+    super.onReady();
   }
 }

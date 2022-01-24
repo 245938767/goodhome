@@ -7,6 +7,16 @@ class RegisterPage extends GetView<RegisterController> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text('RegisterPage')),
-        body: SafeArea(child: Text('RegisterController')));
+        body: SafeArea(
+            child: GetBuilder<RegisterController>(
+          init: RegisterController(),
+          builder: (controller) {
+            return TextButton(
+                onPressed: () {
+                  Get.back();
+                },
+                child: Text("back"));
+          },
+        )));
   }
 }

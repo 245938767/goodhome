@@ -10,7 +10,6 @@ import 'logic.dart';
 class LoginPage extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
-    final loginLogic = Get.find<LoginController>();
     Size size = MediaQuery.of(context).size;
     double _mainHeight = size.width / 2.7;
 

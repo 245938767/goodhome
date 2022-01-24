@@ -5,7 +5,11 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:goodhome/pages/home/index.dart';
 import 'package:goodhome/pages/login/binding.dart';
 import 'package:goodhome/pages/login/login.dart';
+import 'package:goodhome/pages/login/login_phone/binding.dart';
+import 'package:goodhome/pages/login/login_phone/login_phone.dart';
 import 'package:goodhome/pages/not_found.dart';
+import 'package:goodhome/pages/register/binding.dart';
+import 'package:goodhome/pages/register/register.dart';
 import 'package:goodhome/pages/roomdetail/view.dart';
 
 void main() {
@@ -50,5 +54,11 @@ class RouteConfig {
     GetPage(name: login, page: () => LoginPage(), binding: LoginBinding()),
     GetPage(name: roomDetail, page: () => RoomdetailPage()),
     GetPage(name: notFound, page: () => const NotFoundPage()),
+    GetPage(
+        name: register, page: () => RegisterPage(), binding: RegisterBinding()),
+    GetPage(
+        name: phoneLogin,
+        page: () => LoginPhonePage(),
+        binding: LoginPhoneBinding()),
   ];
 }
