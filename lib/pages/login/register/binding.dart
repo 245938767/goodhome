@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
-import 'package:goodhome/pages/register/logic.dart';
+
+import 'logic.dart';
 
 class RegisterBinding implements Bindings {
   @override

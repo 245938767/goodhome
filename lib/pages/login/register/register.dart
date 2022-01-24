@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:goodhome/pages/register/logic.dart';
+
+import 'logic.dart';
 
 class RegisterPage extends GetView<RegisterController> {
   @override
