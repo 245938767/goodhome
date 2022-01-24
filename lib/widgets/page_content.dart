@@ -34,7 +34,7 @@ class PageContent extends StatelessWidget {
               child: const Text("404")),
           FlatButton(
               onPressed: () {
-                Get.toNamed(RouteConfig.roomDetail, arguments: {"intx": x});
+                Get.toNamed(RouteConfig.roomDetail, arguments: x);
               },
               child: const Text("传参数")),
           FlatButton(

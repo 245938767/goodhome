@@ -3,7 +3,8 @@ import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:goodhome/pages/home/index.dart';
-import 'package:goodhome/pages/login.dart';
+import 'package:goodhome/pages/login/binding.dart';
+import 'package:goodhome/pages/login/login.dart';
 import 'package:goodhome/pages/not_found.dart';
 import 'package:goodhome/pages/roomdetail/view.dart';
 
@@ -46,7 +47,7 @@ class RouteConfig {
   ///别名映射页面
   static final List<GetPage> getPages = [
     GetPage(name: main, page: () => HomePage()),
-    GetPage(name: login, page: () => LoginPage()),
+    GetPage(name: login, page: () => LoginPage(), binding: LoginBinding()),
     GetPage(name: roomDetail, page: () => RoomdetailPage()),
     GetPage(name: notFound, page: () => const NotFoundPage()),
   ];
