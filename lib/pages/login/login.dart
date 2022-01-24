@@ -52,78 +52,98 @@ class LoginPage extends GetView<LoginController> {
                           ],
                         ),
                       ),
-                      Container(
-                        margin: const EdgeInsets.only(bottom: 10),
-                        height: 50,
-                        width: 280,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border.all(color: Colors.black, width: 1),
-                          borderRadius: BorderRadius.circular((50.0)),
-                        ),
-                        child: Row(
-                          children: <Widget>[
-                            Expanded(
-                              flex: 1,
-                              child: Image.asset("assets/home.png"),
-                            ),
-                            Expanded(
-                              flex: 3,
-                              child: TextFormField(
-                                autofocus: true,
-                                controller: loginLogic.unameController,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                  labelText: "用户名",
-                                ),
+                      Form(
+                        key: loginLogic.formKey,
+                        child: Column(
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.only(bottom: 10),
+                              height: 50,
+                              width: 280,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                border:
+                                    Border.all(color: Colors.black, width: 1),
+                                borderRadius: BorderRadius.circular((50.0)),
                               ),
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(
-                          bottom: 10,
-                        ),
-                        padding: const EdgeInsets.only(left: 20),
-                        height: 50,
-                        width: 280,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border.all(color: Colors.black, width: 1),
-                          borderRadius: BorderRadius.circular((50.0)),
-                        ),
-                        child: Row(
-                          children: <Widget>[
-                            Expanded(
-                              flex: 3,
-                              child: TextFormField(
-                                // inputFormatters: [
-                                // FilteringTextInputFormatter.allow(RegExp(
-                                //     r"^(?![A-Z]+$)(?![a-z]+$)(?!\d+$)(?![\W_]+$)\S{6,16}$"))
-                                // FilterChip(label: label, onSelected: onSelected)
-                                // ],
-                                obscureText: loginLogic.passwordShow,
-                                controller: loginLogic.passwordController,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                  labelText: "密码",
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                                flex: 1,
-                                child: IconButton(
-                                  onPressed: () {
-                                    loginLogic.passWordShowBar();
-                                  },
-                                  splashColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  icon: Icon(
-                                    loginLogic.passwordIcon,
-                                    color: Colors.red,
+                              child: Row(
+                                children: <Widget>[
+                                  Expanded(
+                                    flex: 1,
+                                    child: Image.asset("assets/home.png"),
                                   ),
-                                ))
+                                  Expanded(
+                                    flex: 3,
+                                    child: TextFormField(
+                                      validator: (value) {
+                                        RegExp reg = new RegExp(
+                                            r'^[\u4e00-\u9fa5a-zA-Z0-9]{5,12}$');
+                                        if (!reg.hasMatch(value!)) {
+                                          return '请输入正确的用户名';
+                                        }
+                                        return null;
+                                      },
+                                      autofocus: true,
+                                      controller: loginLogic.unameController,
+                                      decoration: const InputDecoration(
+                                        border: InputBorder.none,
+                                        labelText: "用户名",
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            Container(
+                              margin: const EdgeInsets.only(
+                                bottom: 10,
+                              ),
+                              padding: const EdgeInsets.only(left: 20),
+                              height: 50,
+                              width: 280,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                border:
+                                    Border.all(color: Colors.black, width: 1),
+                                borderRadius: BorderRadius.circular((50.0)),
+                              ),
+                              child: Row(
+                                children: <Widget>[
+                                  Expanded(
+                                    flex: 3,
+                                    child: TextFormField(
+                                      validator: (value) {
+                                        RegExp reg = new RegExp(
+                                            r'^(?=.*[a-z])(?=.*\d)[^]{6,16}$');
+                                        if (!reg.hasMatch(value!)) {
+                                          return '必须字母和数字6-16位';
+                                        }
+                                        return null;
+                                      },
+                                      obscureText: loginLogic.passwordShow,
+                                      controller: loginLogic.passwordController,
+                                      decoration: const InputDecoration(
+                                        border: InputBorder.none,
+                                        labelText: "密码",
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                      flex: 1,
+                                      child: IconButton(
+                                        onPressed: () {
+                                          loginLogic.passWordShowBar();
+                                        },
+                                        splashColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        icon: Icon(
+                                          loginLogic.passwordIcon,
+                                          color: Colors.red,
+                                        ),
+                                      ))
+                                ],
+                              ),
+                            ),
                           ],
                         ),
                       ),

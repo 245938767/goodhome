@@ -7,6 +7,7 @@ import '../../application.dart';
 class LoginController extends GetxController {
   final TextEditingController _unameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   //是不显示密码
   late bool _passwordShow = true;
   //密码显示按钮
@@ -24,6 +25,7 @@ class LoginController extends GetxController {
   get passwordIcon => _passwordIcon;
   get passwordController => _passwordController;
   get unameController => _unameController;
+  get formKey => _formKey;
 
   void passWordShowBar() {
     _passwordShow = !_passwordShow;
@@ -52,13 +54,18 @@ class LoginController extends GetxController {
     update();
   }
 
+  //登陆
   login() {
-    String username = _unameController.value.text;
-    String password = _passwordController.value.text;
-    if (username == "admin" && password == "admin") {
-      _lodingShow = true;
-    } else {
-      _lodingShow = false;
+    if (_formKey.currentState!.validate()) {
+      Get.defaultDialog(onConfirm: () => print("Ok"), middleText: "校验成功");
+
+      String username = _unameController.value.text;
+      String password = _passwordController.value.text;
+      if (username == "admin" && password == "admin") {
+        _lodingShow = true;
+      } else {
+        _lodingShow = false;
+      }
     }
   }
 
